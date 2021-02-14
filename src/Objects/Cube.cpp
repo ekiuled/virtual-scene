@@ -1,6 +1,7 @@
 #include "Cube.hpp"
 
 void Cube::display() {
+    glPushMatrix();
     glTranslatef(center_.x, center_.y, center_.z);
 
     glBegin(GL_QUADS);
@@ -48,4 +49,5 @@ void Cube::display() {
     glVertex3f(scale_, -scale_, -scale_);
 
     glEnd();
+    glPopMatrix();
 }

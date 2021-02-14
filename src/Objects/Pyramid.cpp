@@ -1,6 +1,7 @@
 #include "Pyramid.hpp"
 
 void Pyramid::display() {
+    glPushMatrix();
     glTranslatef(center_.x, center_.y, center_.z);
 
     glBegin(GL_TRIANGLES);
@@ -30,4 +31,5 @@ void Pyramid::display() {
     glVertex3f(-scale_, -scale_, scale_);
 
     glEnd();
+    glPopMatrix();
 }
