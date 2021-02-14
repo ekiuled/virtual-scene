@@ -51,8 +51,8 @@ void MainWindow::display() {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    GLfloat light_diffuse[] = {1.0, 0.0, 0.0};
-    GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};
+    GLfloat light_diffuse[] = {0.6, 0.6, 0.7};
+    GLfloat light_position[] = {1.0, 1.0, 1.0, 1.0};
     glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
     glLightfv(GL_LIGHT0, GL_POSITION, light_position);
     glEnable(GL_LIGHTING);
