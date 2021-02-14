@@ -51,12 +51,19 @@ void MainWindow::display() {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    GLfloat light_diffuse[] = {0.6, 0.6, 0.7};
-    GLfloat light_position[] = {1.0, 1.0, 1.0, 1.0};
-    glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
-    glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+    GLfloat blue_diffuse[] = {0.1, 0.0, 0.8};
+    GLfloat blue_position[] = {1.0, 1.0, 1.0, 1.0};
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, blue_diffuse);
+    glLightfv(GL_LIGHT0, GL_POSITION, blue_position);
+
+    GLfloat red_diffuse[] = {1.0, 0.6, 0.7};
+    GLfloat red_position[] = {-1.0, -1.0, 1.0, 1.0};
+    glLightfv(GL_LIGHT1, GL_DIFFUSE, red_diffuse);
+    glLightfv(GL_LIGHT1, GL_POSITION, red_position);
+
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
+    glEnable(GL_LIGHT1);
 
     gluLookAt(camera_.x, camera_.y, camera_.z, // eye
               camera_.x, camera_.y, 0.0,       // center
@@ -67,6 +74,7 @@ void MainWindow::display() {
     pyramid_->display();
 
     glDisable(GL_LIGHT0);
+    glDisable(GL_LIGHT1);
 
     glutSwapBuffers();
 }
