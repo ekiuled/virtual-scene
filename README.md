@@ -40,7 +40,13 @@ docker run --network host -e DISPLAY=$DISPLAY virtualscene <parameters...>
 
 Камеру в приложении можно двигать с помощью стрелок или клавиш `W`/`A`/`S`/`D`/`Q`/`E`.
 
-## Примеры
+## Пример
 
-- ...
-- ...
+```
+> ./virtual-scene 0.0 0.0 4.0     \                          
+                  1.0 1.0 -1.0    \
+                  0.5 30.0 45.0   \
+                  -0.2 0.5 -3.0   \
+                  2.0 0.0 35.0
+```
+![Example image](example/example.png)
