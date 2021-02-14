@@ -17,7 +17,7 @@ void timer(int value) {
     glutTimerFunc(30, timer, value);
 }
 
-void keyboard(int key, int, int) {
+void special(int key, int, int) {
     if (key == GLUT_KEY_RIGHT) {
         mainWindow->right();
     } else if (key == GLUT_KEY_LEFT) {
@@ -26,6 +26,23 @@ void keyboard(int key, int, int) {
         mainWindow->up();
     } else if (key == GLUT_KEY_DOWN) {
         mainWindow->down();
+    }
+    glutPostRedisplay();
+}
+
+void keyboard(unsigned char key, int, int) {
+    if (key == 'd') {
+        mainWindow->right();
+    } else if (key == 'a') {
+        mainWindow->left();
+    } else if (key == 'w') {
+        mainWindow->up();
+    } else if (key == 's') {
+        mainWindow->down();
+    } else if (key == 'e') {
+        mainWindow->forward();
+    } else if (key == 'q') {
+        mainWindow->backward();
     }
     glutPostRedisplay();
 }
@@ -83,7 +100,8 @@ int main(int argc, char** argv) {
     glutDisplayFunc(display);
     glutReshapeFunc(resize);
     glutTimerFunc(0, timer, 0);
-    glutSpecialFunc(keyboard);
+    glutSpecialFunc(special);
+    glutKeyboardFunc(keyboard);
     glutMainLoop();
 
     return 0;

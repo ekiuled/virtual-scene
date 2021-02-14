@@ -36,6 +36,8 @@ void MainWindow::init() {
                    1.0,  // zNear
                    200.0 // zFar
     );
+
+    glClearColor(0.2, 0.2, 0.2, 1.0);
 }
 
 void MainWindow::resize(int w, int h) {
@@ -93,4 +95,12 @@ void MainWindow::up() {
 
 void MainWindow::down() {
     camera_.y -= delta_;
+}
+
+void MainWindow::forward() {
+    camera_.z -= delta_;
+}
+
+void MainWindow::backward() {
+    camera_.z += delta_;
 }

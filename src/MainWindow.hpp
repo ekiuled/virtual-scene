@@ -25,4 +25,6 @@ public:
     void left();
     void up();
     void down();
+    void forward();
+    void backward();
 };

@@ -2,7 +2,7 @@
 
 Приложение, генерирующее виртуальную сцену с камерой, кубом и пирамидой (тестовое задание).
 
-## Build
+## Сборка
 
 ### Локальная сборка
 
@@ -20,7 +20,7 @@ docker build -t virtualscene .
 docker run --network host -e DISPLAY=$DISPLAY virtualscene <parameters...>
 ```
 
-## Usage
+## Использование
 
 Координаты объектов и другие параметры задаются в виде параметров программы.
 
@@ -35,7 +35,9 @@ docker run --network host -e DISPLAY=$DISPLAY virtualscene <parameters...>
 - `pyramidX`, `pyramidY`, `pyramidZ` — координаты пирамиды
 - `cubeScale`, `pyramidScale` — размеры куба и пирамиды
 
-## Examples
+Камеру в приложении можно двигать с помощью стрелок или клавиш `W`/`A`/`S`/`D`/`Q`/`E`.
+
+## Примеры
 
 - ...
 - ...
