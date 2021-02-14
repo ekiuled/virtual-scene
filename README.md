@@ -13,11 +13,11 @@ make
 
 ### Docker
 
-Сборка контейнера с использованием `Dockerfile`. Пример:
+Сборка контейнера с использованием `Dockerfile`. Пример сборки и запуска docker-контейнера:
 
 ```
 docker build -t virtualscene .
-docker run --network host -e DISPLAY=$DISPLAY virtualscene <parameters...>
+docker run --network host -e DISPLAY=$DISPLAY virtualscene 0.0 0.0 4.0 1.0 1.0 -1.0 0.5 30.0 45.0 -0.2 0.5 -3.0 2.0 0.0 35.0
 ```
 
 ## Использование
