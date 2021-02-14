@@ -26,14 +26,17 @@ docker run --network host -e DISPLAY=$DISPLAY virtualscene <parameters...>
 
 ```
 ./virtual-scene camX camY camZ
-                cubeX cubeY cubeZ cubeScale
-                pyramidX pyramidY pyramidZ pyramidScale
+                cubeX cubeY cubeZ 
+                cubeScale cubeRotX cubeRotY
+                pyramidX pyramidY pyramidZ 
+                pyramidScale pyramidRotX pyramidRotY
 ```
 
 - `camX`, `camY`, `camZ` — координаты камеры
 - `cubeX`, `cubeY`, `cubeZ` — координаты куба
 - `pyramidX`, `pyramidY`, `pyramidZ` — координаты пирамиды
 - `cubeScale`, `pyramidScale` — размеры куба и пирамиды
+- `cubeRotX`, `cubeRotY`, `pyramidRotX`, `pyramidRotY` — углы вращения куба и пирамиды вокруг осей `X` и `Y` соответственно в градусах
 
 Камеру в приложении можно двигать с помощью стрелок или клавиш `W`/`A`/`S`/`D`/`Q`/`E`.
 

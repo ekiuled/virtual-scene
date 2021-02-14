@@ -15,8 +15,12 @@ public:
     MainWindow(Point const& camera,
                Point const& cube_center,
                GLfloat cube_scale,
+               GLfloat cube_rotation_x,
+               GLfloat cube_rotation_y,
                Point const& pyramid_center,
-               GLfloat pyramid_scale);
+               GLfloat pyramid_scale,
+               GLfloat pyramid_rotation_x,
+               GLfloat pyramid_rotation_y);
 
     void resize(int w, int h);
     void display();

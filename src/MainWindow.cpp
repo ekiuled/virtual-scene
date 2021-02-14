@@ -6,11 +6,16 @@
 MainWindow::MainWindow(Point const& camera,
                        Point const& cube_center,
                        GLfloat cube_scale,
+                       GLfloat cube_rotation_x,
+                       GLfloat cube_rotation_y,
                        Point const& pyramid_center,
-                       GLfloat pyramid_scale) {
+                       GLfloat pyramid_scale,
+                       GLfloat pyramid_rotation_x,
+                       GLfloat pyramid_rotation_y) {
     camera_ = camera;
-    cube_ = std::make_unique<Cube>(cube_center, cube_scale);
-    pyramid_ = std::make_unique<Pyramid>(pyramid_center, pyramid_scale);
+    cube_ = std::make_unique<Cube>(cube_center, cube_scale, cube_rotation_x, cube_rotation_y);
+    pyramid_ = std::make_unique<Pyramid>(
+        pyramid_center, pyramid_scale, pyramid_rotation_x, pyramid_rotation_y);
 
     {
         int argc = 0;

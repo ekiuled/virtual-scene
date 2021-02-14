@@ -2,7 +2,10 @@
 
 void Cube::display() {
     glPushMatrix();
+
     glTranslatef(center_.x, center_.y, center_.z);
+    glRotatef(rotation_x_, 1.0f, 0.0f, 0.0f);
+    glRotatef(rotation_y_, 0.0f, 1.0f, 0.0f);
 
     glBegin(GL_QUADS);
 

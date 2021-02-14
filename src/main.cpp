@@ -56,8 +56,12 @@ void argparse(int argc,
               Point& camera,
               Point& cube_center,
               GLfloat& cube_scale,
+              GLfloat& cube_rotation_x,
+              GLfloat& cube_rotation_y,
               Point& pyramid_center,
-              GLfloat& pyramid_scale) {
+              GLfloat& pyramid_scale,
+              GLfloat& pyramid_rotation_x,
+              GLfloat& pyramid_rotation_y) {
     enum {
         camX = 1,
         camY,
@@ -66,10 +70,14 @@ void argparse(int argc,
         cubeY,
         cubeZ,
         cubeScale,
+        cubeRotX,
+        cubeRotY,
         pyramidX,
         pyramidY,
         pyramidZ,
         pyramidScale,
+        pyramidRotX,
+        pyramidRotY,
         argsize
     };
 
@@ -80,22 +88,28 @@ void argparse(int argc,
     camera = {glfloat(argv[camX]), glfloat(argv[camY]), glfloat(argv[camZ])};
     cube_center = {glfloat(argv[cubeX]), glfloat(argv[cubeY]), glfloat(argv[cubeZ])};
     cube_scale = glfloat(argv[cubeScale]);
+    cube_rotation_x = glfloat(argv[cubeRotX]);
+    cube_rotation_y = glfloat(argv[cubeRotY]);
     pyramid_center = {glfloat(argv[pyramidX]), glfloat(argv[pyramidY]),
                       glfloat(argv[pyramidZ])};
     pyramid_scale = glfloat(argv[pyramidScale]);
+    pyramid_rotation_x = glfloat(argv[pyramidRotX]);
+    pyramid_rotation_y = glfloat(argv[pyramidRotY]);
 }
 
 int main(int argc, char** argv) {
     Point camera;
     Point cube_center;
-    GLfloat cube_scale;
+    GLfloat cube_scale, cube_rotation_x, cube_rotation_y;
     Point pyramid_center;
-    GLfloat pyramid_scale;
+    GLfloat pyramid_scale, pyramid_rotation_x, pyramid_rotation_y;
 
-    argparse(argc, argv, camera, cube_center, cube_scale, pyramid_center, pyramid_scale);
+    argparse(argc, argv, camera, cube_center, cube_scale, cube_rotation_x, cube_rotation_y,
+             pyramid_center, pyramid_scale, pyramid_rotation_x, pyramid_rotation_y);
 
-    mainWindow = std::make_unique<MainWindow>(camera, cube_center, cube_scale,
-                                              pyramid_center, pyramid_scale);
+    mainWindow = std::make_unique<MainWindow>(
+        camera, cube_center, cube_scale, cube_rotation_x, cube_rotation_y,
+        pyramid_center, pyramid_scale, pyramid_rotation_x, pyramid_rotation_y);
 
     glutDisplayFunc(display);
     glutReshapeFunc(resize);
