@@ -1,4 +1,6 @@
 #include "MainWindow.hpp"
+#include <iostream>
+#include <stdexcept>
 
 std::unique_ptr<MainWindow> mainWindow;
 
@@ -28,15 +30,55 @@ void keyboard(int key, int, int) {
     glutPostRedisplay();
 }
 
-int main(int argc, char** argv) {
-    Point cube_center{1.0, 1.0, -1.0};
-    GLfloat cube_scale = 0.5;
-    Point pyramid_center{-1.5, 0.0, -3.0};
-    GLfloat pyramid_scale = 1.0;
-    Point camera{0.0, 0.0, 4.0};
+GLfloat glfloat(const char* str) {
+    return atof(str);
+}
 
-    mainWindow = std::make_unique<MainWindow>(
-        cube_center, cube_scale, pyramid_center, pyramid_scale, camera);
+void argparse(int argc,
+              char** argv,
+              Point& camera,
+              Point& cube_center,
+              GLfloat& cube_scale,
+              Point& pyramid_center,
+              GLfloat& pyramid_scale) {
+    enum {
+        camX = 1,
+        camY,
+        camZ,
+        cubeX,
+        cubeY,
+        cubeZ,
+        cubeScale,
+        pyramidX,
+        pyramidY,
+        pyramidZ,
+        pyramidScale,
+        argsize
+    };
+
+    if (argc < argsize) {
+        throw std::invalid_argument("Wrong number of arguments");
+    }
+
+    camera = {glfloat(argv[camX]), glfloat(argv[camY]), glfloat(argv[camZ])};
+    cube_center = {glfloat(argv[cubeX]), glfloat(argv[cubeY]), glfloat(argv[cubeZ])};
+    cube_scale = glfloat(argv[cubeScale]);
+    pyramid_center = {glfloat(argv[pyramidX]), glfloat(argv[pyramidY]),
+                      glfloat(argv[pyramidZ])};
+    pyramid_scale = glfloat(argv[pyramidScale]);
+}
+
+int main(int argc, char** argv) {
+    Point camera;
+    Point cube_center;
+    GLfloat cube_scale;
+    Point pyramid_center;
+    GLfloat pyramid_scale;
+
+    argparse(argc, argv, camera, cube_center, cube_scale, pyramid_center, pyramid_scale);
+
+    mainWindow = std::make_unique<MainWindow>(camera, cube_center, cube_scale,
+                                              pyramid_center, pyramid_scale);
 
     glutDisplayFunc(display);
     glutReshapeFunc(resize);

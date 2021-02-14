@@ -1,29 +1,41 @@
 # virtual-scene
-GUI приложение, генерирующее виртуальную сцену с камерой, кубом и пирамидой (тестовое задание).
+
+Приложение, генерирующее виртуальную сцену с камерой, кубом и пирамидой (тестовое задание).
 
 ## Build
+
+### Локальная сборка
 
 ```
 cmake CMakeLists.txt
 make
 ```
 
-## Usage
+### Docker
+
+Сборка контейнера с использованием `Dockerfile`. Пример:
 
 ```
-./virtual-scene
+docker build -t virtualscene .
+docker run --network host -e DISPLAY=$DISPLAY virtualscene <parameters...>
 ```
+
+## Usage
+
+Координаты объектов и другие параметры задаются в виде параметров программы.
+
+```
+./virtual-scene camX camY camZ
+                cubeX cubeY cubeZ cubeScale
+                pyramidX pyramidY pyramidZ pyramidScale
+```
+
+- `camX`, `camY`, `camZ` — координаты камеры
+- `cubeX`, `cubeY`, `cubeZ` — координаты куба
+- `pyramidX`, `pyramidY`, `pyramidZ` — координаты пирамиды
+- `cubeScale`, `pyramidScale` — размеры куба и пирамиды
 
 ## Examples
 
 - ...
 - ...
-
-## Docker
-
-Пример запуска приложения в docker-контейнере:
-
-```
-docker build -t virtualscene .
-docker run --network host -e DISPLAY=$DISPLAY virtualscene 
-```

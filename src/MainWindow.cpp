@@ -3,14 +3,14 @@
 #include "Objects/Pyramid.hpp"
 #include <iostream>
 
-MainWindow::MainWindow(Point const& cube_center,
+MainWindow::MainWindow(Point const& camera,
+                       Point const& cube_center,
                        GLfloat cube_scale,
                        Point const& pyramid_center,
-                       GLfloat pyramid_scale,
-                       Point const& camera) {
+                       GLfloat pyramid_scale) {
+    camera_ = camera;
     cube_ = std::make_unique<Cube>(cube_center, cube_scale);
     pyramid_ = std::make_unique<Pyramid>(pyramid_center, pyramid_scale);
-    camera_ = camera;
 
     {
         int argc = 0;

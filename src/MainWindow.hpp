@@ -4,19 +4,19 @@
 #include <memory>
 
 class MainWindow {
+    Point camera_;
     std::unique_ptr<Object> cube_;
     std::unique_ptr<Object> pyramid_;
-    Point camera_;
     const GLfloat delta_ = 0.1;
 
     void init();
 
 public:
-    MainWindow(Point const& cube_center,
+    MainWindow(Point const& camera,
+               Point const& cube_center,
                GLfloat cube_scale,
                Point const& pyramid_center,
-               GLfloat pyramid_scale,
-               Point const& camera);
+               GLfloat pyramid_scale);
 
     void resize(int w, int h);
     void display();
